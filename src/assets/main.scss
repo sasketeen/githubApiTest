@@ -1,0 +1,30 @@
+@import './normalize.css';
+@import './fonts.css';
+@import './base.css';
+
+#app {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  padding: 100px 0 0;
+
+  &__title {
+    margin: 0;
+    font-size: 45px;
+    font-weight: 600;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+  transition: all .3s;
+
+  &:hover {
+    color: var(--main_violet);
+    opacity: .7;
+  }
+}

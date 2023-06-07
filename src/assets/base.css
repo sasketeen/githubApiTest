@@ -1,0 +1,48 @@
+:root {
+  /* Базовые цвета */
+  --base_white: #ffffff;
+  --base_black: #000000;
+  --base_gray: #c3c3c3;
+
+  /* Основные цвета	*/
+  --main_black: #1a1a1a;
+  --main_green: #7ee787;
+  --main_violet: #dd7df7;
+  --main_blue: #004c97;
+
+  /* Дополнительные цвета */
+  --additional_gray_light: #af9797;
+  --additional_gray_dark: #575757;
+
+  /* Веб цвета */
+  --web_danger: #f92f43;
+  --web_warning: #f4d04c;
+  --web_success: #039a38;
+  --web_blue_cloud: #68c2ff;
+  --web_blue_sea: #3a74b2;
+}
+
+:root {
+  --main-text-color: var(--base_white);
+  --background-color: var(--main_black);
+  --additional-text-color: var(--additional_gray_dark);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-weight: normal;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  min-height: 100dvh;
+  background-color: var(--background-color);
+  color: var(--main-text-color);
+  font-family: 'Roboto', sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
