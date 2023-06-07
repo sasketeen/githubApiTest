@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "predeploy": "rm -rf dist && npm run build",
+    "deploy": "gh-pages -d dist",
     "preview": "vite preview",
     "test:unit": "vitest",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
@@ -24,6 +26,7 @@
     "@vue/test-utils": "^2.3.2",
     "eslint": "^8.39.0",
     "eslint-plugin-vue": "^9.11.0",
+    "gh-pages": "^5.0.0",
     "jsdom": "^22.0.0",
     "prettier": "^2.8.8",
     "sass": "^1.62.1",

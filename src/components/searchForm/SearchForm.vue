@@ -97,7 +97,6 @@ const value = computed({
     padding: 10px 80px 10px 15px;
     width: 100%;
     background: none;
-    border: unset;
     border: 1.5px solid var(--main_green);
     border-radius: 22px;
 
@@ -173,6 +172,8 @@ const value = computed({
   &__radio {
     width: 0px;
     height: 0px;
+    z-index: -10;
+    opacity: 0;
 
     & + label {
       cursor: pointer;
