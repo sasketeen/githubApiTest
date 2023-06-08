@@ -9,42 +9,43 @@
       />
       <button v-if="value" class="search-form__submit" :disabled="isLoading">Найти</button>
     </div>
-  </form>
 
-  <div v-if="filterParams" class="filter-wrapper">
-    <div class="filter">
-      <span>Сортировать:</span>
-      <ul class="filter__list">
-        <li v-for="(param, index) in filterParams" :key="index">
-          <input
-            type="radio"
-            name="filter"
-            class="filter__radio"
-            :id="param.id"
-            :value="param.value"
-            v-model="sort"
-          />
-          <label :for="param.id" @click="handleFilterClick">
-            {{ param.label }}
-            <svg
-              class="filter__icon"
-              :class="{ filter__icon_down: searchParams.order === 'desc' }"
-              viewBox="0 -960 960 960"
-            >
-              <path d="m283-345-43-43 240-240 240 239-43 43-197-197-197 198Z" />
-            </svg>
-          </label>
-        </li>
-      </ul>
+    <!-- TODO вынести в отдельный компонент -->
+    <div v-if="filterParams" class="filter-wrapper">
+      <div class="filter">
+        <span>Сортировать:</span>
+        <ul class="filter__list">
+          <li v-for="(param, index) in filterParams" :key="index">
+            <input
+              type="radio"
+              name="filter"
+              class="filter__radio"
+              :id="param.id"
+              :value="param.value"
+              v-model="sort"
+            />
+            <label :for="param.id" @click="handleFilterClick">
+              {{ param.label }}
+              <svg
+                class="filter__icon"
+                :class="{ filter__icon_down: searchParams.order === 'desc' }"
+                viewBox="0 -960 960 960"
+              >
+                <path d="m283-345-43-43 240-240 240 239-43 43-197-197-197 198Z" />
+              </svg>
+            </label>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </form>
 </template>
 
 <script setup>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 
-defineProps(['inputPlaceholder','isLoading', 'filterParams'])
+defineProps(['inputPlaceholder', 'isLoading', 'filterParams'])
 defineEmits(['submitted'])
 
 const store = useStore()
@@ -60,25 +61,24 @@ const handleFilterClick = ({ currentTarget }) => {
   }
 }
 
-
 const getOrder = computed(() => {
   return searchParams.value.order === 'desc' ? 'asc' : 'desc'
 })
 
 const sort = computed({
-  get () {
-      return searchParams.value.sort
-    },
-  set (newValue) {
+  get() {
+    return searchParams.value.sort
+  },
+  set(newValue) {
     store.commit('setSearchParams', { ...searchParams.value, sort: newValue })
   }
 })
 
 const value = computed({
-  get () {
-      return searchParams.value.value
-    },
-  set (newValue) {
+  get() {
+    return searchParams.value.value
+  },
+  set(newValue) {
     store.commit('setSearchParams', { ...searchParams.value, value: newValue })
   }
 })
@@ -86,7 +86,6 @@ const value = computed({
 
 <style scoped lang="scss">
 .search-form {
-  display: flex;
 
   &__input-wrapper {
     width: 100%;
@@ -133,7 +132,7 @@ const value = computed({
 
     &:disabled {
       background-color: var(--additional_gray_light);
-      opacity: .8;
+      opacity: 0.8;
     }
   }
 }
@@ -174,6 +173,7 @@ const value = computed({
     height: 0px;
     z-index: -10;
     opacity: 0;
+    position: absolute;
 
     & + label {
       cursor: pointer;
